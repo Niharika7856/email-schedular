@@ -21,7 +21,8 @@ export const config = {
   port: int('PORT', 4000),
   backendUrl: req('BACKEND_URL'),
   publicUrl: opt('PUBLIC_URL'),
-  frontendUrl: req('FRONTEND_URL'),
+  // Normalize to an origin without a trailing slash for CORS and callback redirects.
+  frontendUrl: req('FRONTEND_URL').replace(/\/+$/, ''),
   jwtSecret: req('JWT_SECRET'),
   google: {
     clientId: opt('GOOGLE_CLIENT_ID'),

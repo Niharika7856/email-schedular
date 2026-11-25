@@ -10,7 +10,8 @@ import type {
   User,
 } from '../types';
 
-export const API_URL = 'https://email-schedular-production.up.railway.app';
+const productionApiUrl = 'https://email-schedular-production.up.railway.app';
+export const API_URL = (import.meta.env.VITE_API_URL ?? (import.meta.env.DEV ? '' : productionApiUrl)).replace(/\/$/, '');
 
 export class ApiError extends Error {
   constructor(public status: number, message: string) {
