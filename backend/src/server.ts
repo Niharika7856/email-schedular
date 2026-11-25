@@ -13,7 +13,9 @@ import { emailQueue } from './queue/queue';
 import { ensureIndex } from './services/search';
 
 const app = express();
+
 app.set('trust proxy', 1);
+
 app.use(cors({ origin: config.frontendUrl, credentials: true }));
 app.use(express.json({ limit: '5mb' }));
 app.use(cookieParser());
